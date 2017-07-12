@@ -12,8 +12,9 @@
 
 <body>
     <div id="app">
+        <p><a @click="filter('all')">all</a><a @click="filter('done')">done</a><a @click="filter('notDone')">not done</a></p>
         <ul>
-            <li v-for="(todo, index) in todolist" :class="todo.done? 'done' : '' " :key="index">
+            <li v-for="(todo, index) in showlist" :class="todo.done? 'done' : '' " :key="index" @click="tagDone(index)">
                 {{todo.title}}
             </li>
         </ul>
@@ -36,10 +37,14 @@
                 title: '学习javascript',
                 done: true
             }],
-            newTodo: ''
+            newTodo: '',
+            showlist: []
         },
         computed: {
 
+        },
+        created() {
+            this.showlist = this.todolist
         },
         methods: {
             add() {
@@ -48,13 +53,46 @@
                     done: false
                 })
                 this.newTodo = ''
+            },
+            tagDone(index) {
+                this.todolist[index].done = true
+            },
+            filter(filterStr) {
+                switch (filterStr) {
+                    case 'all':
+                        this.showlist = this.todolist
+                        break;
+                    case 'done':
+                        this.showlist = this.todolist.filter((todo) => {
+                            return todo.done
+                        })
+                        console.log(this.showlist)
+                        break;
+                    default:
+                        this.showlist = this.todolist.filter((todo) => {
+                            return !todo.done
+                        })
+                }
             }
         }
     })
     </script>
     <style>
+    a {
+        display: inline-block;
+        width: 10%;
+        padding: 0 5%;
+        background: pink;
+        border: 1px solid blue;
+        cursor: pointer;
+    }
+    
     .done {
         text-decoration: line-through
+    }
+    
+    ul li {
+        cursor: pointer
     }
     </style>
 </body>
