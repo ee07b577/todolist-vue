@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>todolist</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(todo, index) in todolist" :class="todo.done? 'done' : '' " :key="index">
+                {{todo.title}}
+            </li>
+        </ul>
+        <p>
+            <input type="text" v-model="newTodo" placeholder="add a todo" @keyup.enter="add">
+            <button @click="add">添加</button>
+        </p>
+    </div>
+    <script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            todolist: [{
+                title: '学习vue',
+                done: false
+            }, {
+                title: '学习gulp',
+                done: false
+            }, {
+                title: '学习javascript',
+                done: true
+            }],
+            newTodo: ''
+        },
+        computed: {
+
+        },
+        methods: {
+            add() {
+                this.todolist.push({
+                    title: this.newTodo,
+                    done: false
+                })
+                this.newTodo = ''
+            }
+        }
+    })
+    </script>
+    <style>
+    .done {
+        text-decoration: line-through
+    }
+    </style>
+</body>
+
+</html>
