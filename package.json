@@ -17,11 +17,17 @@
   },
   "homepage": "https://github.com/ee07b577/todolist-vue#readme",
   "devDependencies": {
+    "bower": "^1.8.0",
     "browser-sync": "^2.18.12",
     "gulp": "^3.9.1",
-    "gulp-connect": "^5.0.0"
+    "gulp-clean": "^0.3.2",
+    "gulp-connect": "^5.0.0",
+    "gulp-html-replace": "^1.6.2",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-uglify": "^3.0.0"
   },
   "dependencies": {
+    "gulp-concat": "^2.6.1",
     "vue": "^2.3.4",
     "vuex": "^2.3.1"
   }
