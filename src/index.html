@@ -9,7 +9,7 @@
 <body>
     <div id="app">
         <p>
-            <filter-component v-for="(filter, key) in filters" @filterateevent='filtrate(filter)' :text='filter' :key="key"></filter-component>
+            <filter-component v-for="(filter, key) in filters" @click.native='filtrate(filter)' :text='filter' :key="key"></filter-component>
         </p>
         <ul>
             <li v-for="(todo, index) in showlist" :class="todo.done? 'done' : '' " :key="index" @click="tagDone(index)">
