@@ -22,12 +22,11 @@
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",
     "gulp-connect": "^5.0.0",
-    "gulp-html-replace": "^1.6.2",
     "gulp-htmlmin": "^3.0.0",
-    "gulp-uglify": "^3.0.0"
+    "gulp-uglify": "^3.0.0",
+    "gulp-usemin": "^0.3.28"
   },
   "dependencies": {
-    "gulp-concat": "^2.6.1",
     "vue": "^2.3.4",
     "vuex": "^2.3.1"
   }
