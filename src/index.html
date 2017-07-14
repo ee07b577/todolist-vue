@@ -12,7 +12,7 @@
             <filter-component v-for="(filter, key) in filters" @click.native='filtrate(filter)' :text='filter' :key="key"></filter-component>
         </p>
         <ul>
-            <li v-for="(todo, index) in showlist" :class="todo.done? 'done' : '' " :key="index" @click="tagDone(index)">
+            <li v-for="(todo, index) in showlist" :class="todo.done? 'done' : '' " :key="index" @click="toggleDone(index)">
                 {{todo.title}}
             </li>
         </ul>
@@ -23,6 +23,8 @@
     </div>
     <!-- build:js js/bundle.min.js-->
     <script src="js/vue.js"></script>
+    <script src="js/vuex.min.js"></script>
+    <script src="js/store.js"></script>
     <script src="js/components.js"></script>
     <script src="js/main.js"></script>
     <!-- endbuild -->
