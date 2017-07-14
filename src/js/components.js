@@ -1,4 +1,4 @@
 Vue.component('filter-component', {
-    template: '<a>{{text}}</a>',
-    props: ['text']
+    template: '<a :class="classname">{{text}}</a>',
+    props: ['text', 'classname']
 });

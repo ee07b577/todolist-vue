@@ -9,7 +9,7 @@
 <body>
     <div id="app">
         <p>
-            <filter-component v-for="(filter, key) in filters" @click.native='filtrate(filter)' :text='filter' :key="key"></filter-component>
+            <filter-component v-for="(filter, key) in filters" @click.native='filtrate(key)' :text='filter.text' :key="key" :classname="filter.isActive? 'active':''"></filter-component>
         </p>
         <ul>
             <li v-for="(todo, index) in showlist" :class="todo.done? 'done' : '' " :key="index" @click="toggleDone(index)">
@@ -36,6 +36,10 @@
         background: pink;
         border: 1px solid blue;
         cursor: pointer;
+    }
+    
+    a.active {
+        background: blue
     }
     
     .done {

@@ -2,10 +2,17 @@ var app = new Vue({
     el: '#app',
     data: {
         newTodo: '',
-        // showlist: [],
-        currentFilter: 'all',
-        filters: ['all', 'done', 'notDone'],
-        currentFilter: 'all'
+        filters: [{
+            text: 'all',
+            isActive: true
+        }, {
+            text: 'done',
+            isActive: false
+        }, {
+            text: 'notDone',
+            isActive: false
+        }],
+        currentFilter: 0
     },
     store,
     computed: {
@@ -34,10 +41,10 @@ var app = new Vue({
         },
         showlist() {
             switch (this.currentFilter) {
-                case 'all':
+                case 0:
                     return this.todos
                     break;
-                case 'done':
+                case 1:
                     return this.dones
                     break;
                 default:
@@ -68,8 +75,14 @@ var app = new Vue({
             this.$store.commit('toggleDone', index)
                 // todo: 刷新待实现
         },
-        filtrate(filterStr) {
-            this.currentFilter = filterStr
+        filtrate(key) {
+            this.currentFilter = key
+            this.filters = this.filters.map(function(item) {
+                item.isActive = false
+                return item
+            })
+            this.filters[key].isActive = true
+
         }
     }
 });
